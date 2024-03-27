@@ -7,31 +7,18 @@ namespace module_five
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Напишите что-то");
-            var str = Console.ReadLine();
-
-            Console.WriteLine("Укажите глубину эха");
-            var deep = int.Parse(Console.ReadLine());
-
-            Echo(str, deep);
-
-            Console.ReadKey();
+            Console.WriteLine(PowerUp(5, 4));
         }
-
-        static void Echo(string saidword, int deep)
+                
+        private static int PowerUp(int N, byte pow)
         {
-            var modif = saidword;
+            if (N != 0 && pow == 0)
+                return 1;
 
-            if (modif.Length > 2)
-            {
-                modif = modif.Remove(0, 2);
-                Console.WriteLine("..." + modif);
-            }
+            else if (pow == 1)
+                return N;
 
-            if (deep > 1)
-            {
-                Echo(modif, deep - 1);
-            }
+            else return N * PowerUp(N, --pow);
         }
     }
 
