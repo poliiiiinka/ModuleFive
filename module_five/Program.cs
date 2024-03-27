@@ -5,23 +5,33 @@ namespace module_five
 {
     internal class Program
     {
-        static int num1 = 667;
         static void Main(string[] args)
         {
-            Console.WriteLine(num1);
-            Console.WriteLine(Sum());
+            Console.WriteLine("Напишите что-то");
+            var str = Console.ReadLine();
 
-            if (num1 > 0)
-            {
-                var num3 = 5;
-                Console.WriteLine(num1 + num3);
-            }
+            Console.WriteLine("Укажите глубину эха");
+            var deep = int.Parse(Console.ReadLine());
+
+            Echo(str, deep);
+
+            Console.ReadKey();
         }
 
-        static int Sum()
+        static void Echo(string saidword, int deep)
         {
-            var num2 = 1;
-            return num1 + num2;
+            var modif = saidword;
+
+            if (modif.Length > 2)
+            {
+                modif = modif.Remove(0, 2);
+                Console.WriteLine("..." + modif);
+            }
+
+            if (deep > 1)
+            {
+                Echo(modif, deep - 1);
+            }
         }
     }
 
